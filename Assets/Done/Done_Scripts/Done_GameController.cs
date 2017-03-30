@@ -57,6 +57,10 @@ public class Done_GameController : MonoBehaviour
 			checkTime = 0;
 				}
 		checkTime++;
+		if (Input.GetKeyDown (KeyCode.Escape))
+		{
+			Application.LoadLevel (0);
+		}
 	}
 
 	//Removes null objects from hazards
