@@ -21,3 +21,5 @@ To Do:
   Controller support
   
   Spawner upgrade to allow for weighted spawns
+  
+  Resize play area
