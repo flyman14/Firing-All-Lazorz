@@ -63,7 +63,7 @@ public class Done_Homer : MonoBehaviour
 		GameObject closest = null;
 		//Get closest hazard to lock onto
 		foreach (GameObject item in hazards) {
-			if (item != null) {
+			if (item != null && item.tag != "Powerup") {
 				//Check COV
 				Vector3 direction = item.transform.position - transform.position;
 				if (Vector3.Angle(transform.forward, direction) <= visionAngle)
