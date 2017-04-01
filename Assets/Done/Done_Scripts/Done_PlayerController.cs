@@ -18,9 +18,11 @@ public class Done_PlayerController : MonoBehaviour
 	public float fireRate;
 
 	public int bonusHoming;
-	public int numShots;
+	public int bonusShots;
 	 
 	private float nextFire;
+	private const float shotSpread = 0.5f;
+
 	void Start ()
 	{
 		bonusHoming = 0;
@@ -33,6 +35,14 @@ public class Done_PlayerController : MonoBehaviour
 			GameObject newBolt = (GameObject)Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 			newBolt.GetComponent<Done_Homer>().turnSpeed = bonusHoming;
 			audio.Play ();
+			if (bonusShots > 0) {
+				for (int i = 1; i <= bonusShots; i++) {
+					newBolt = (GameObject)Instantiate(shot, shotSpawn.position + Vector3.left*i*shotSpread, shotSpawn.rotation);
+					newBolt.GetComponent<Done_Homer>().turnSpeed = bonusHoming;
+					newBolt = (GameObject)Instantiate(shot, shotSpawn.position + Vector3.right*i*shotSpread, shotSpawn.rotation);
+					newBolt.GetComponent<Done_Homer>().turnSpeed = bonusHoming;
+				}
+			}
 		}
 	}
 
