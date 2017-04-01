@@ -18,6 +18,7 @@ public class Done_PlayerController : MonoBehaviour
 	public float fireRate;
 
 	public int bonusHoming;
+	public int numShots;
 	 
 	private float nextFire;
 	void Start ()

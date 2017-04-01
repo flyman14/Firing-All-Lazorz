@@ -6,6 +6,7 @@ public class Done_DestroyByContact : MonoBehaviour
 	public GameObject explosion;
 	public GameObject playerExplosion;
 	public int scoreValue;
+	public bool isBolt;
 
 	private Done_GameController gameController;
 
@@ -26,7 +27,7 @@ public class Done_DestroyByContact : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == "Boundary" || other.tag == "Enemy" || other.tag == "EnemyBolt")
+		if (other.tag == "Boundary")
 		{
 			return;
 		}
