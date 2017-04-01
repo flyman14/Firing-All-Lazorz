@@ -6,7 +6,6 @@ public class Done_DestroyByContact : MonoBehaviour
 	public GameObject explosion;
 	public GameObject playerExplosion;
 	public int scoreValue;
-	public bool isBolt;
 
 	private Done_GameController gameController;
 
