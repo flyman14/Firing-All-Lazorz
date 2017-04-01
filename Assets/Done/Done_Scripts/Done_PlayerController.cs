@@ -17,15 +17,20 @@ public class Done_PlayerController : MonoBehaviour
 	public Transform shotSpawn;
 	public float fireRate;
 
+	public int bonusHoming;
 	 
 	private float nextFire;
-	
+	void Start ()
+	{
+		bonusHoming = 0;
+	}
 	void Update ()
 	{
 		if (Input.GetButton("Fire1") && Time.time > nextFire) 
 		{
 			nextFire = Time.time + fireRate;
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			GameObject newBolt = (GameObject)Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			newBolt.GetComponent<Done_Homer>().turnSpeed = bonusHoming;
 			audio.Play ();
 		}
 	}

@@ -70,8 +70,8 @@ public class Done_Homer : MonoBehaviour
 				{
 					//Replace 'closest' if null or 'item' is closer.
 					if (closest == null || 
-					    (closest.transform.position - transform.position).magnitude <
-					    (item.transform.position - transform.position).magnitude) 
+					    (closest.transform.position - transform.position).sqrMagnitude >=
+					    (item.transform.position - transform.position).sqrMagnitude) 
 					{
 						closest = item;
 					}

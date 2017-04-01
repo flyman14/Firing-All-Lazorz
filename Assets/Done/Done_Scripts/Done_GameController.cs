@@ -47,7 +47,7 @@ public class Done_GameController : MonoBehaviour
 	{
 		if (restart)
 		{
-			if (Input.GetKeyDown (KeyCode.R))
+			if (Input.GetButton("Submit"))
 			{
 				Application.LoadLevel (Application.loadedLevel);
 			}
@@ -57,7 +57,7 @@ public class Done_GameController : MonoBehaviour
 			checkTime = 0;
 				}
 		checkTime++;
-		if (Input.GetKeyDown (KeyCode.Escape))
+		if (Input.GetButton("Cancel"))
 		{
 			Application.LoadLevel (0);
 		}
@@ -140,4 +140,6 @@ public class Done_GameController : MonoBehaviour
 		restartText.text = "Press 'R' for Restart";
 		restart = true;
 	}
+
+
 }
