@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Done_GameController : MonoBehaviour
 {
-	public GameObject[] hazards;
+	public HazardEntry[] hazards;
 	public Vector3 spawnValues;
 	public int hazardCount;
 	public float spawnWait;
@@ -19,7 +19,8 @@ public class Done_GameController : MonoBehaviour
 	public GUIText restartText;
 	public GUIText gameOverText;
 	public GUIText livesText;
-	
+
+	private int totalWeight;
 	private bool gameOver;
 	private bool restart;
 	private int score;
@@ -41,6 +42,11 @@ public class Done_GameController : MonoBehaviour
 		playerLives = 3;
 		livesText.text = "Lives: " + playerLives;
 		StartCoroutine (SpawnWaves ());
+		totalWeight = 0;
+		foreach (HazardEntry entry in hazards) 
+		{
+			totalWeight += entry.weight;
+		}
 	}
 	
 	void Update ()
@@ -82,7 +88,17 @@ public class Done_GameController : MonoBehaviour
 		{
 			for (int i = 0; i < hazardCount; i++)
 			{
-				GameObject hazard = hazards [Random.Range (0, hazards.Length)];
+				GameObject hazard = null;
+				int randomChoice = Random.Range(0, totalWeight);
+				foreach (HazardEntry entry in hazards) {
+					if (randomChoice < entry.weight) 
+					{
+						hazard = entry.hazard;
+						break;
+					}
+					randomChoice -= entry.weight;
+				}
+
 				Vector3 spawnPosition = new Vector3 (Random.Range (-spawnValues.x, spawnValues.x), spawnValues.y, spawnValues.z);
 				Quaternion spawnRotation = Quaternion.identity;
 				hazard = (GameObject)Instantiate (hazard, spawnPosition, spawnRotation);
@@ -99,6 +115,8 @@ public class Done_GameController : MonoBehaviour
 			}
 		}
 	}
+
+
 
 	public void Respawn()
 	{
@@ -142,4 +160,11 @@ public class Done_GameController : MonoBehaviour
 	}
 
 
+}
+
+[System.Serializable]
+public struct HazardEntry
+{
+	public GameObject hazard;
+	public int weight;
 }

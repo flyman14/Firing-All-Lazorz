@@ -8,16 +8,16 @@ Current differences from original:
   
   Multiple lives and respawning
   
-    Add a main menu
+  Add a main menu
 	
-	Powerup spawning
+  Powerup spawning
+	
+  Resize play area
+  
+  Spawner upgrade to allow for weighted spawns
   
 To Do:
   
   New powerups
   
   New enemy types
-  
-  Spawner upgrade to allow for weighted spawns
-  
-  Resize play area
