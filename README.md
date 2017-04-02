@@ -16,8 +16,6 @@ Current differences from original:
   
   Spawner upgrade to allow for weighted spawns
   
-To Do:
-  
   New powerups
   
   New enemy types
